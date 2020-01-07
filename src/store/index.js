@@ -17,10 +17,16 @@ export default new Vuex.Store({
     }, {
       id: 3,
       title: 'todo item 3',
-      completed: false
+      completed: true
     }]
   },
   getters: {
+    count: state => {
+      return ++state.count
+    },
+    completedTodos: state => {
+      return state.todos.filter(todo => todo.completed)
+    }
   },
   mutations: {
   },
