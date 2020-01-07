@@ -1,4 +1,4 @@
-# vuex-app
+# vue-vuex
 
 ## Project setup
 ```
@@ -22,3 +22,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Netlify
+```
+npm install netlify-cli -g
+netlify login
+netlify init / netlify link
+npm run netlify
+npm run netlify:prod
+```
