@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <p>{{ localCount }}</p>
-    <p>{{ count }}</p>
-    <p>{{ mapStateCount }}</p>
-    <p>{{ mapStateCountAlias }}</p>
-    <p>{{ mapStateCountPlusLocalState }}</p>
+    <p>localCount: {{ localCount }}</p>
+    <p>count: {{ count }}</p>
+    <p>mapStateCount: {{ mapStateCount }}</p>
+    <p>mapStateCountAlias: {{ mapStateCountAlias }}</p>
+    <p>mapStateCountPlusLocalState: {{ mapStateCountPlusLocalState }}</p>
 
-    <p>{{ doneTodos }}</p>
-    <p>{{ doneTodosCount }}</p>
-    <p>{{ getTodo(2) }}</p>
+    <p>doneTodos: {{ doneTodos }}</p>
+    <p>doneTodosCount: {{ doneTodosCount }}</p>
+    <p>getTodo(2): {{ getTodo(2) }}</p>
+
+    <button @click="add">ADD_COUNT</button>
+    <button @click="subtract">SUBTRACT_COUNT</button>
+    <button @click="reset">RESET_COUNT</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'App',
@@ -52,6 +56,23 @@ export default {
     ]),
     ...mapGetters({
       getTodo: 'getTodoById'
+    })
+  },
+  methods: {
+    add () {
+      this.$store.commit({
+        type: 'ADD_COUNT',
+        count: 2
+      })
+    },
+    subtract () {
+      this.SUBTRACT_COUNT({
+        count: 2
+      })
+    },
+    ...mapMutations(['SUBTRACT_COUNT']),
+    ...mapMutations({
+      reset: 'RESET_COUNT'
     })
   }
 }

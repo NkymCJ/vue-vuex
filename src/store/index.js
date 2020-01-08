@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { ADD_COUNT, SUBTRACT_COUNT, RESET_COUNT } from './mutation'
 
 Vue.use(Vuex)
 
@@ -30,6 +31,15 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    [ADD_COUNT] (state, payload) {
+      state.count += payload.count
+    },
+    [SUBTRACT_COUNT] (state, payload) {
+      state.count -= payload.count
+    },
+    [RESET_COUNT] (state, payload) {
+      state.count = 0
+    }
   },
   actions: {
   },
