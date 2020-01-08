@@ -21,9 +21,6 @@ export default new Vuex.Store({
     }]
   },
   getters: {
-    count: state => {
-      return ++state.count
-    },
     completedTodos: state => {
       return state.todos.filter(todo => todo.completed)
     }
