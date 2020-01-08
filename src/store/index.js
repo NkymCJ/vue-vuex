@@ -21,8 +21,12 @@ export default new Vuex.Store({
     }]
   },
   getters: {
-    completedTodos: state => {
-      return state.todos.filter(todo => todo.completed)
+    doneTodos: state => state.todos.filter(todo => todo.completed),
+    doneTodosCount: (state, getters) => {
+      return getters.doneTodos.length
+    },
+    getTodoById: state => id => {
+      return state.todos.find(todo => todo.id === id)
     }
   },
   mutations: {
