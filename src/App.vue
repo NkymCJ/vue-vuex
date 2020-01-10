@@ -10,9 +10,13 @@
     <p>doneTodosCount: {{ doneTodosCount }}</p>
     <p>getTodo(2): {{ getTodo(2) }}</p>
 
-    <button @click="add">ADD_COUNT</button>
-    <button @click="subtract">SUBTRACT_COUNT</button>
-    <button @click="reset">RESET_COUNT</button>
+    <button @click="add">add</button>
+    <button @click="subtract">subtract</button>
+    <button @click="reset">reset</button>
+    <button @click="addAsync">addCountAsync</button>
+
+    <p>{{ todos }}</p>
+    <button @click="fetchTodos">fetchTodos</button>
   </div>
 </template>
 
@@ -38,7 +42,7 @@ export default {
         return state.count + this.localCount
       }
     }),
-    // ...mapState(['count'])
+    ...mapState(['todos']),
 
     // Getter && mapGetters
     // doneTodos () {
@@ -73,7 +77,15 @@ export default {
     ...mapMutations(['SUBTRACT_COUNT']),
     ...mapMutations({
       reset: 'RESET_COUNT'
-    })
+    }),
+    addAsync () {
+      this.$store.dispatch('addCountAsync', {
+        count: 2
+      })
+    },
+    fetchTodos () {
+      this.$store.dispatch('fetchTodos')
+    }
   }
 }
 </script>
